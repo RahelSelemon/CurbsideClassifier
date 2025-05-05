@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CurbsideClassifier</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="sidebar">
+      <h1>Curbside Classifier</h1>
+      <ul>
+        <li><a href="#projectOverview">Overview</a></li>
+        <li><a href="#feedback">Design & Development</a></li>
+        <li><a href="#screenshots">Simulation Environment</a></li>
+        <li><a href="#hifi-prototype">Technical Stack</a></li>
+        <li><a href="#results">Results</a></li>
+        <li><a href="#video-demo">Demo</a></li>
+        <li><a href="#user-testing">Challenges</a></li>
+        <li><a href="#lessons">Known Limitations</a></li>
+        <li><a href="#reflection">What We Learned & Future</a></li>
+      </ul>
+    </div>
+
+    <main class="main-content">
+      <header id="logoBar">
+        <h2>Automating Curbside Pickup with Deep Learning</h2>
+        <p class="project-blurb">
+          Using Unity, Keras, and Google Sheets API to intelligently match cars
+          to online orders in real-time.
+        </p>
+      </header>
+
+      <div id="projectOverview" class="section">
+        <h3>Project Overview</h3>
+        <p>
+          <i><b>Making curbside pickup seamless for everyone involved.</b></i>
+          Curbside pickup is meant to be easy, but both <b>customers</b> and
+          <b>employees</b> still face friction: customers must notify stores via
+          <b>clunky apps</b> or calls, while staff rush outside to identify
+          cars.
+        </p>
+        <br />
+        <p>
+          Our goal was to eliminate that friction by making the process
+          <b>intelligent</b>, <b>hands-off</b>, and <b>human-centered</b>. We
+          built <b>CurbsideClassifier</b> to solve inefficiencies in contactless
+          order pickups. Using <b>simulation</b> and <b>AI</b>, we automatically
+          identify arriving vehicles and notify store employees—<b
+            >no phone calls</b
+          >, <b>no apps</b>, <b>no delays</b>.
+        </p>
+      </div>
+
+      <div id="feedback" class="section">
+        <h3>Design & Development</h3>
+        <p>
+          To train our model, we generated <b>annotated data</b> from Unity. We
+          exported <b>screenshots</b> and <b>JSON metadata</b> of vehicle
+          positions. We trained a <b>Keras neural network</b> to identify
+          vehicles in individual parking spots and detect <b>empty spaces</b>.
+        </p>
+        <br />
+        <p>
+          After classification, our system used the <b>Google Sheets API</b> to
+          automatically display the <b>matched order</b> and
+          <b>car location</b> inside the store. <b>No human input needed.</b>
+        </p>
+      </div>
+
+      <div id="screenshots" class="section">
+        <h3>Simulation Environment</h3>
+        <p>
+          Using <b>Unity</b>, we modeled an entire <b>parking lot</b> filled
+          with cars, trees, rocks, and other <b>realistic obstructions</b> to
+          simulate <b>real-world conditions</b> and generate training data.
+        </p>
+
+        <figure>
+          <img src="images/image1.png" class="demo-img" />
+          <figcaption>
+            Perspective view of the simulated parking lot environment.
+          </figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/image2.png" class="demo-img" />
+          <figcaption>
+            Top-down layout used for slicing images and annotation.
+          </figcaption>
+        </figure>
+      </div>
+
+      <div id="hifi-prototype" class="section">
+        <h3>Technical Stack</h3>
+        <ul>
+          <li><b>Unity (C#):</b> Simulation and screenshot capture</li>
+          <li><b>Python + Keras:</b> Deep learning classification model</li>
+          <li><b>PIL + JSON:</b> Annotation and preprocessing</li>
+          <li><b>Google Sheets API:</b> Internal display and status sync</li>
+        </ul>
+      </div>
+
+      <div id="results" class="section">
+        <h3>Results</h3>
+        <p>
+          Our <b>neural network</b> identified which order was in which spot
+          with <b>100% accuracy</b> on over <b>3000 simulated samples</b>. Even
+          in <b>challenging conditions</b>—cars parked across lines or on
+          medians—the model maintained <b>97% accuracy</b>. These promising
+          results show that with <b>minimal tweaks</b>, CurbsideClassifier could
+          be ready for <b>real-world deployment</b>.
+        </p>
+      </div>
+
+      <div class="section" id="video-demo">
+        <h3>Demo in Action</h3>
+        <p>
+          To evaluate our system in real-world conditions, we tested the
+          curbside classifier in a simulated residential environment. The goal
+          was to detect and classify vehicles in real-time, then send
+          appropriate notifications to nearby residents. Below is a short video
+          walk-through of our end-to-end pipeline in action.
+        </p>
+
+        <div class="video-wrapper">
+          <iframe
+            src="https://www.youtube.com/embed/lOOztmdRyHQ"
+            title="Curbside Classifier Demo"
+            frameborder="0"
+            allowfullscreen
+          ></iframe>
+        </div>
+        <p>
+          The GIF below illustrates the <b>notification logic</b> at work. After
+          detecting a vehicle using a <b>mounted camera</b>, the system
+          identifies its <b>class</b> (e.g., delivery truck, visitor, unknown),
+          determines the appropriate recipient based on <b>location</b>, and
+          sends a <b>custom text alert</b>.
+        </p>
+
+        <figure>
+          <img
+            src="images/original.gif"
+            alt="Curbside Classifier Demo GIF"
+            class="demo-img"
+          />
+          <figcaption>
+            Real-time classification and SMS notification workflow
+          </figcaption>
+        </figure>
+      </div>
+
+      <div id="user-testing" class="section">
+        <h3>Challenges & Lessons</h3>
+        <ul>
+          <li>Learning Unity + C# scripting from scratch</li>
+          <li>Custom logic for image slicing and vehicle detection</li>
+          <li>Training a deep learning model on simulated images</li>
+          <li>Integrating with real-time Google Sheets API display</li>
+        </ul>
+      </div>
+
+      <div id="lessons" class="section">
+        <h3>Known Limitations</h3>
+        <p>
+          Our model has not yet been tested in <b>live outdoor conditions</b>.
+          Future iterations will need to account for <b>weather</b>,
+          <b>lighting</b>, <b>car variation</b>, and
+          <b>false positives</b> caused by overlapping shapes.
+        </p>
+      </div>
+
+      <div id="reflection" class="section">
+        <h3>What We Learned & Future</h3>
+        <p>
+          We aim to collect <b>real images</b> from actual parking lots under
+          various <b>lighting/weather conditions</b>. We also plan to
+          incorporate <b>license plate detection</b> to resolve duplicate car
+          issues and improve <b>robustness</b> in edge cases.
+        </p>
+        <p>
+          This system has the potential to be used in
+          <b>real businesses</b>—making the pickup process <b>smoother</b> for
+          customers and less <b>burdensome</b> for staff.
+        </p>
+      </div>
+
+      <footer>Rahel Selemon, CSCI1300 Spring 2025</footer>
+    </main>
+  </body>
+</html>
